@@ -2,22 +2,91 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Trending Movies</title>
+  <title>MovieApp</title>
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
   <header>
-    <h1>Trending Movies</h1>
+    <div class="top-bar">
+      <h1>MovieApp</h1>
+      <input type="text" id="search-bar" placeholder="Search movies...">
+    </div>
   </header>
-  <div class="movies-container">
-    <% movies.forEach(function(movie) { %>
-      <div class="movie-card">
-        <a href="/movie/<%= movie.id %>">
-          <img src="<%= movie.poster %>" alt="<%= movie.title %> Poster">
-          <h2><%= movie.title %></h2>
-        </a>
+  <main>
+    <!-- Trending Section -->
+    <section class="trending-section">
+      <h2>Trending Now</h2>
+      <div class="movie-scroll">
+        <% trendingMovies.forEach(function(movie) { %>
+          <div class="movie-card">
+            <a href="/movie/<%= movie.id %>">
+              <img src="<%= movie.poster %>" alt="<%= movie.title %>">
+              <h3><%= movie.title %></h3>
+            </a>
+          </div>
+        <% }) %>
       </div>
-    <% }) %>
-  </div>
+    </section>
+
+    <!-- Bollywood Section -->
+    <section class="category-section">
+      <h2>Bollywood</h2>
+      <div class="movie-scroll">
+        <% bollywoodMovies.forEach(function(movie) { %>
+          <div class="movie-card">
+            <a href="/movie/<%= movie.id %>">
+              <img src="<%= movie.poster %>" alt="<%= movie.title %>">
+              <h3><%= movie.title %></h3>
+            </a>
+          </div>
+        <% }) %>
+      </div>
+    </section>
+
+    <!-- Hollywood Section -->
+    <section class="category-section">
+      <h2>Hollywood</h2>
+      <div class="movie-scroll">
+        <% hollywoodMovies.forEach(function(movie) { %>
+          <div class="movie-card">
+            <a href="/movie/<%= movie.id %>">
+              <img src="<%= movie.poster %>" alt="<%= movie.title %>">
+              <h3><%= movie.title %></h3>
+            </a>
+          </div>
+        <% }) %>
+      </div>
+    </section>
+
+    <!-- South Section -->
+    <section class="category-section">
+      <h2>South</h2>
+      <div class="movie-scroll">
+        <% southMovies.forEach(function(movie) { %>
+          <div class="movie-card">
+            <a href="/movie/<%= movie.id %>">
+              <img src="<%= movie.poster %>" alt="<%= movie.title %>">
+              <h3><%= movie.title %></h3>
+            </a>
+          </div>
+        <% }) %>
+      </div>
+    </section>
+
+    <!-- Punjabi Section -->
+    <section class="category-section">
+      <h2>Punjabi</h2>
+      <div class="movie-scroll">
+        <% punjabiMovies.forEach(function(movie) { %>
+          <div class="movie-card">
+            <a href="/movie/<%= movie.id %>">
+              <img src="<%= movie.poster %>" alt="<%= movie.title %>">
+              <h3><%= movie.title %></h3>
+            </a>
+          </div>
+        <% }) %>
+      </div>
+    </section>
+  </main>
 </body>
 </html>
