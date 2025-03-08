@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Trending Movies</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Trending Movies</h1>
+  </header>
+  <div class="movies-container">
+    <% movies.forEach(function(movie) { %>
+      <div class="movie-card">
+        <a href="/movie/<%= movie.id %>">
+          <img src="<%= movie.poster %>" alt="<%= movie.title %> Poster">
+          <h2><%= movie.title %></h2>
+        </a>
+      </div>
+    <% }) %>
+  </div>
+</body>
+</html>
