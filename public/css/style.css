@@ -8,15 +8,15 @@
 /* Body & Global Theme */
 body {
   font-family: Arial, sans-serif;
-  background-color: #0f171e; /* Prime-like dark background */
+  background-color: #0f171e; /* Dark background */
   color: #fff;
 }
 
-/* Sticky Header */
-.prime-header {
+/* Header (Sticky) */
+.pv-header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   background-color: #131a22;
   padding: 10px 15px;
   position: sticky;
@@ -24,40 +24,77 @@ body {
   z-index: 999;
 }
 
-.menu-icon, .search-icon {
-  font-size: 1.2rem;
-  cursor: pointer;
+.pv-left, .pv-right {
+  display: flex;
+  align-items: center;
 }
 
-.site-title {
-  color: #00a8e1; /* Prime-ish blue accent */
+.pv-menu-icon, .pv-search-icon {
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.pv-site-title {
   font-size: 1.4rem;
   font-weight: bold;
+  color: #00a8e1; /* Accent color (similar to Prime, but not exact) */
 }
 
 /* Hero Banner */
-.hero-banner {
+.pv-hero-banner {
   position: relative;
   width: 100%;
   overflow: hidden;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
-.hero-image {
+
+.pv-hero-image {
   width: 100%;
   display: block;
+  object-fit: cover;
+  /* Adjust height if you want a shorter/taller hero */
 }
-.hero-text {
+
+.pv-hero-overlay {
   position: absolute;
-  bottom: 20px;
-  left: 20px;
-  color: #fff;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 23, 30, 0.5); /* Semi-transparent overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.hero-text h2 {
-  font-size: 1.8rem;
-  margin-bottom: 5px;
+
+.pv-hero-content {
+  text-align: center;
+  max-width: 80%;
+  margin: auto;
 }
-.hero-text p {
+
+.pv-hero-content h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.pv-hero-content p {
   font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+.pv-cta-button {
+  background-color: #00a8e1;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.pv-cta-button:hover {
+  background-color: #008bb7;
 }
 
 /* Main Content */
@@ -65,94 +102,61 @@ main {
   padding: 10px;
 }
 
-/* Category Sections */
-.category-section {
+/* Category Section */
+.pv-category-section {
   margin-bottom: 20px;
 }
-.category-section h2 {
-  margin: 10px 0 5px 10px;
+
+.pv-category-section h2 {
+  margin: 0 0 10px 10px;
   font-size: 1.2rem;
+  color: #fff;
 }
-.movie-scroll {
+
+/* Horizontal Scroll Container */
+.pv-movie-scroll {
   display: flex;
   overflow-x: auto;
   gap: 10px;
   padding: 10px;
   scroll-behavior: smooth;
 }
-.movie-scroll::-webkit-scrollbar {
+
+/* Scrollbar styling (WebKit) */
+.pv-movie-scroll::-webkit-scrollbar {
   height: 6px;
 }
-.movie-scroll::-webkit-scrollbar-thumb {
+.pv-movie-scroll::-webkit-scrollbar-thumb {
   background: #333;
   border-radius: 3px;
 }
-.movie-card {
+
+/* Movie Card */
+.pv-movie-card {
   flex: 0 0 auto;
   width: 120px;
   text-align: center;
 }
-.movie-card img {
+
+.pv-movie-card img {
   width: 100%;
   border-radius: 4px;
 }
-.movie-card h3 {
+
+.pv-movie-card h3 {
   font-size: 0.9rem;
   margin-top: 5px;
 }
 
-/* Movie Details Page */
-.movie-details {
-  display: flex;
-  padding: 20px;
-}
-.movie-details img {
-  max-width: 300px;
-  border-radius: 8px;
-  margin-right: 20px;
-}
-.details {
-  max-width: 600px;
-}
-.download-button {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #00a8e1;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 5px;
-  margin-top: 15px;
-}
-
-/* Download Options */
-.download-options {
-  display: flex;
-  justify-content: center;
-  padding: 20px;
-}
-.quality-option {
-  margin: 10px;
-}
-.quality-option a {
-  padding: 10px 15px;
-  background-color: #00a8e1;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 5px;
-}
-.quality-option a:hover {
-  background-color: #008ec2;
-}
-
 /* Responsive Adjustments */
 @media (min-width: 600px) {
-  .movie-card {
-    width: 150px;
+  .pv-hero-content h2 {
+    font-size: 2.4rem;
   }
-  .hero-text h2 {
-    font-size: 2.2rem;
-  }
-  .hero-text p {
+  .pv-hero-content p {
     font-size: 1.2rem;
+  }
+  .pv-movie-card {
+    width: 150px;
   }
 }
