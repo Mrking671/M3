@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><%= movie.Title || movie.title %></title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header>
+    <h1><%= movie.Title || movie.title %></h1>
+  </header>
+  <div class="movie-details">
+    <img src="<%= movie.Poster %>" alt="<%= movie.Title || movie.title %> Poster">
+    <div class="details">
+      <p><strong>Released:</strong> <%= movie.Released %></p>
+      <p><strong>Genre:</strong> <%= movie.Genre %></p>
+      <p><strong>Director:</strong> <%= movie.Director %></p>
+      <p><strong>Plot:</strong> <%= movie.Plot %></p>
+      <a href="/download/<%= movie.imdbID %>" class="download-button">Download</a>
+    </div>
+  </div>
+</body>
+</html>
