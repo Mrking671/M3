@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Download Options</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Select Download Quality</h1>
+  </header>
+  <div class="download-options">
+    <% results.forEach(function(item) { %>
+      <div class="quality-option">
+        <a href="/download/<%= imdbID %>/<%= item.quality %>"><%= item.quality %></a>
+      </div>
+    <% }) %>
+  </div>
+</body>
+</html>
