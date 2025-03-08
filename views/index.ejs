@@ -2,111 +2,132 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>MovieApp - Prime-Inspired</title>
+  <title>MovieApp - Futuristic Design</title>
+  <!-- Google Fonts for a modern look -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link 
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" 
+    rel="stylesheet"
+  >
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
   <!-- Header -->
-  <header class="pv-header">
-    <div class="pv-left">
-      <span class="pv-menu-icon">☰</span>
-      <h1 class="pv-site-title">MovieApp</h1>
+  <header class="futura-header">
+    <div class="header-left">
+      <span class="menu-icon">☰</span>
+      <a href="/" class="logo">MovieApp</a>
     </div>
-    <div class="pv-right">
-      <span class="pv-search-icon">🔍</span>
+    <div class="header-right">
+      <!-- Optional icons or user profile -->
+      <span class="search-icon">🔍</span>
+      <span class="user-icon">👤</span>
     </div>
   </header>
 
-  <!-- Hero Banner -->
-  <section class="pv-hero-banner">
-    <!-- Replace the placeholder with your own hero image -->
-    <img 
-      src="https://via.placeholder.com/1600x600.png?text=Hero+Banner" 
-      alt="Hero Banner" 
-      class="pv-hero-image"
-    />
-    <div class="pv-hero-overlay">
-      <div class="pv-hero-content">
-        <h2>Watch Anywhere, Anytime</h2>
-        <p>Enjoy the best movies and shows with a single click</p>
-        <button class="pv-cta-button">Start Watching</button>
+  <!-- Hero Carousel -->
+  <section class="hero-carousel">
+    <div class="carousel-slide active">
+      <img 
+        src="https://via.placeholder.com/1600x600.png?text=Slide+1" 
+        alt="Slide 1"
+      />
+      <div class="carousel-overlay">
+        <h2>Discover Epic Adventures</h2>
+        <p>From blockbuster action to indie gems, find your next favorite film.</p>
+        <button class="cta-button">Explore Now</button>
       </div>
+    </div>
+    <div class="carousel-slide">
+      <img 
+        src="https://via.placeholder.com/1600x600.png?text=Slide+2" 
+        alt="Slide 2"
+      />
+      <div class="carousel-overlay">
+        <h2>New Releases Weekly</h2>
+        <p>Stay on top of the latest hits, fresh from theaters to your screen.</p>
+        <button class="cta-button">View New Releases</button>
+      </div>
+    </div>
+    <div class="carousel-slide">
+      <img 
+        src="https://via.placeholder.com/1600x600.png?text=Slide+3" 
+        alt="Slide 3"
+      />
+      <div class="carousel-overlay">
+        <h2>Watch Anytime, Anywhere</h2>
+        <p>Stream seamlessly on any device, no matter where you are.</p>
+        <button class="cta-button">Start Watching</button>
+      </div>
+    </div>
+    <!-- Carousel controls -->
+    <div class="carousel-controls">
+      <span class="prev-btn">‹</span>
+      <span class="next-btn">›</span>
     </div>
   </section>
 
+  <!-- Quick Search/Filter Bar -->
+  <section class="quick-filter">
+    <h3>Quick Search</h3>
+    <input 
+      type="text" 
+      placeholder="Search movies, genres, or actors..." 
+      class="filter-input"
+    />
+    <button class="filter-btn">Search</button>
+  </section>
+
   <main>
-    <!-- Trending Section -->
-    <section class="pv-category-section">
+    <!-- Featured Trailer Section -->
+    <section class="featured-trailer">
+      <h2>Featured Trailer</h2>
+      <div class="trailer-container">
+        <!-- Replace with an actual embedded trailer iframe or video -->
+        <iframe 
+          width="560" 
+          height="315" 
+          src="https://www.youtube.com/embed/dummy" 
+          title="YouTube video player"
+          frameborder="0"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </section>
+
+    <!-- Trending Now -->
+    <section class="category-section">
       <h2>Trending Now</h2>
-      <div class="pv-movie-scroll">
+      <div class="movie-scroll">
         <% trendingMovies.forEach(function(movie) { %>
-          <div class="pv-movie-card">
+          <div class="movie-card">
             <a href="/movie/<%= movie.id %>">
               <img src="<%= movie.poster %>" alt="<%= movie.title %> Poster">
-              <h3><%= movie.title %></h3>
+              <h4><%= movie.title %></h4>
             </a>
           </div>
         <% }) %>
       </div>
     </section>
 
-    <!-- Bollywood Section -->
-    <section class="pv-category-section">
-      <h2>Bollywood</h2>
-      <div class="pv-movie-scroll">
-        <% bollywoodMovies.forEach(function(movie) { %>
-          <div class="pv-movie-card">
-            <a href="/movie/<%= movie.id %>">
-              <img src="<%= movie.poster %>" alt="<%= movie.title %> Poster">
-              <h3><%= movie.title %></h3>
-            </a>
-          </div>
-        <% }) %>
-      </div>
-    </section>
-
-    <!-- Hollywood Section -->
-    <section class="pv-category-section">
-      <h2>Hollywood</h2>
-      <div class="pv-movie-scroll">
-        <% hollywoodMovies.forEach(function(movie) { %>
-          <div class="pv-movie-card">
-            <a href="/movie/<%= movie.id %>">
-              <img src="<%= movie.poster %>" alt="<%= movie.title %> Poster">
-              <h3><%= movie.title %></h3>
-            </a>
-          </div>
-        <% }) %>
-      </div>
-    </section>
-
-    <!-- South Section -->
-    <section class="pv-category-section">
-      <h2>South</h2>
-      <div class="pv-movie-scroll">
-        <% southMovies.forEach(function(movie) { %>
-          <div class="pv-movie-card">
-            <a href="/movie/<%= movie.id %>">
-              <img src="<%= movie.poster %>" alt="<%= movie.title %> Poster">
-              <h3><%= movie.title %></h3>
-            </a>
-          </div>
-        <% }) %>
-      </div>
-    </section>
-
-    <!-- Punjabi Section -->
-    <section class="pv-category-section">
-      <h2>Punjabi</h2>
-      <div class="pv-movie-scroll">
-        <% punjabiMovies.forEach(function(movie) { %>
-          <div class="pv-movie-card">
-            <a href="/movie/<%= movie.id %>">
-              <img src="<%= movie.poster %>" alt="<%= movie.title %> Poster">
-              <h3><%= movie.title %></h3>
-            </a>
-          </div>
-        <% }) %>
+    <!-- Community Highlights (Reviews, Behind the Scenes, etc.) -->
+    <section class="community-highlights">
+      <h2>Community Highlights</h2>
+      <div class="highlights-grid">
+        <!-- Example placeholder cards -->
+        <div class="highlight-card">
+          <h3>Behind the Scenes</h3>
+          <p>Go backstage with exclusive interviews and set tours.</p>
+        </div>
+        <div class="highlight-card">
+          <h3>Fan Reviews</h3>
+          <p>See what real viewers are saying about the latest releases.</p>
+        </div>
+        <div class="highlight-card">
+          <h3>Director’s Cut</h3>
+          <p>Deep-dive into the director’s vision and filmmaking process.</p>
+        </div>
       </div>
     </section>
   </main>
