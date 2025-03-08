@@ -2,39 +2,47 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>MovieApp</title>
+  <title>MovieApp - Prime-Inspired</title>
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
   <!-- Header -->
-  <header class="prime-header">
-    <div class="menu-icon">☰</div>
-    <h1 class="site-title">MovieApp</h1>
-    <div class="search-icon">🔍</div>
+  <header class="pv-header">
+    <div class="pv-left">
+      <span class="pv-menu-icon">☰</span>
+      <h1 class="pv-site-title">MovieApp</h1>
+    </div>
+    <div class="pv-right">
+      <span class="pv-search-icon">🔍</span>
+    </div>
   </header>
 
-  <!-- Hero banner -->
-  <section class="hero-banner">
+  <!-- Hero Banner -->
+  <section class="pv-hero-banner">
+    <!-- Replace the placeholder with your own hero image -->
     <img 
-      src="https://via.placeholder.com/1080x600.png?text=Hero+Banner" 
+      src="https://via.placeholder.com/1600x600.png?text=Hero+Banner" 
       alt="Hero Banner" 
-      class="hero-image"
+      class="pv-hero-image"
     />
-    <div class="hero-text">
-      <h2>Welcome to MovieApp</h2>
-      <p>Stream or Download Your Favorite Movies</p>
+    <div class="pv-hero-overlay">
+      <div class="pv-hero-content">
+        <h2>Watch Anywhere, Anytime</h2>
+        <p>Enjoy the best movies and shows with a single click</p>
+        <button class="pv-cta-button">Start Watching</button>
+      </div>
     </div>
   </section>
 
   <main>
-    <!-- Trending Movies -->
-    <section class="category-section">
-      <h2>Trending Movies</h2>
-      <div class="movie-scroll">
+    <!-- Trending Section -->
+    <section class="pv-category-section">
+      <h2>Trending Now</h2>
+      <div class="pv-movie-scroll">
         <% trendingMovies.forEach(function(movie) { %>
-          <div class="movie-card">
+          <div class="pv-movie-card">
             <a href="/movie/<%= movie.id %>">
-              <img src="<%= movie.poster %>" alt="<%= movie.title %>">
+              <img src="<%= movie.poster %>" alt="<%= movie.title %> Poster">
               <h3><%= movie.title %></h3>
             </a>
           </div>
@@ -42,14 +50,14 @@
       </div>
     </section>
 
-    <!-- Bollywood -->
-    <section class="category-section">
+    <!-- Bollywood Section -->
+    <section class="pv-category-section">
       <h2>Bollywood</h2>
-      <div class="movie-scroll">
+      <div class="pv-movie-scroll">
         <% bollywoodMovies.forEach(function(movie) { %>
-          <div class="movie-card">
+          <div class="pv-movie-card">
             <a href="/movie/<%= movie.id %>">
-              <img src="<%= movie.poster %>" alt="<%= movie.title %>">
+              <img src="<%= movie.poster %>" alt="<%= movie.title %> Poster">
               <h3><%= movie.title %></h3>
             </a>
           </div>
@@ -57,14 +65,14 @@
       </div>
     </section>
 
-    <!-- Hollywood -->
-    <section class="category-section">
+    <!-- Hollywood Section -->
+    <section class="pv-category-section">
       <h2>Hollywood</h2>
-      <div class="movie-scroll">
+      <div class="pv-movie-scroll">
         <% hollywoodMovies.forEach(function(movie) { %>
-          <div class="movie-card">
+          <div class="pv-movie-card">
             <a href="/movie/<%= movie.id %>">
-              <img src="<%= movie.poster %>" alt="<%= movie.title %>">
+              <img src="<%= movie.poster %>" alt="<%= movie.title %> Poster">
               <h3><%= movie.title %></h3>
             </a>
           </div>
@@ -72,14 +80,14 @@
       </div>
     </section>
 
-    <!-- South -->
-    <section class="category-section">
+    <!-- South Section -->
+    <section class="pv-category-section">
       <h2>South</h2>
-      <div class="movie-scroll">
+      <div class="pv-movie-scroll">
         <% southMovies.forEach(function(movie) { %>
-          <div class="movie-card">
+          <div class="pv-movie-card">
             <a href="/movie/<%= movie.id %>">
-              <img src="<%= movie.poster %>" alt="<%= movie.title %>">
+              <img src="<%= movie.poster %>" alt="<%= movie.title %> Poster">
               <h3><%= movie.title %></h3>
             </a>
           </div>
@@ -87,14 +95,14 @@
       </div>
     </section>
 
-    <!-- Punjabi -->
-    <section class="category-section">
+    <!-- Punjabi Section -->
+    <section class="pv-category-section">
       <h2>Punjabi</h2>
-      <div class="movie-scroll">
+      <div class="pv-movie-scroll">
         <% punjabiMovies.forEach(function(movie) { %>
-          <div class="movie-card">
+          <div class="pv-movie-card">
             <a href="/movie/<%= movie.id %>">
-              <img src="<%= movie.poster %>" alt="<%= movie.title %>">
+              <img src="<%= movie.poster %>" alt="<%= movie.title %> Poster">
               <h3><%= movie.title %></h3>
             </a>
           </div>
