@@ -20,7 +20,6 @@
       <a href="/" class="logo">MovieApp</a>
     </div>
     <div class="header-right">
-      <!-- Optional icons or user profile -->
       <span class="search-icon">🔍</span>
       <span class="user-icon">👤</span>
     </div>
@@ -80,25 +79,25 @@
   </section>
 
   <main>
-    <!-- Featured Trailer Section -->
-    <section class="featured-trailer">
-      <h2>Featured Trailer</h2>
-      <div class="trailer-container">
-        <!-- Replace with an actual embedded trailer iframe or video -->
-        <iframe 
-          width="560" 
-          height="315" 
-          src="https://www.youtube.com/embed/dummy" 
-          title="YouTube video player"
-          frameborder="0"
-          allowfullscreen
-        ></iframe>
+    <!-- First Trending Section -->
+    <section class="category-section">
+      <h2>Trending Now</h2>
+      <div class="movie-scroll">
+        <% trendingMovies.forEach(function(movie) { %>
+          <div class="movie-card">
+            <a href="/movie/<%= movie.id %>">
+              <!-- If you're fetching posters from OMDB, make sure `movie.poster` is valid -->
+              <img src="<%= movie.poster %>" alt="<%= movie.title %> Poster">
+              <h4><%= movie.title %></h4>
+            </a>
+          </div>
+        <% }) %>
       </div>
     </section>
 
-    <!-- Trending Now -->
+    <!-- Second Horizontal Scroller (More Trending or Another Category) -->
     <section class="category-section">
-      <h2>Trending Now</h2>
+      <h2>More Trending</h2>
       <div class="movie-scroll">
         <% trendingMovies.forEach(function(movie) { %>
           <div class="movie-card">
@@ -111,11 +110,10 @@
       </div>
     </section>
 
-    <!-- Community Highlights (Reviews, Behind the Scenes, etc.) -->
+    <!-- Community Highlights -->
     <section class="community-highlights">
       <h2>Community Highlights</h2>
       <div class="highlights-grid">
-        <!-- Example placeholder cards -->
         <div class="highlight-card">
           <h3>Behind the Scenes</h3>
           <p>Go backstage with exclusive interviews and set tours.</p>
