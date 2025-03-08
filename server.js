@@ -14,22 +14,54 @@ app.set('views', path.join(__dirname, 'views'));
 // Serve static files from /public folder
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Sample trending movies data (in production, replace with an API call)
+// Sample data for movies
 const trendingMovies = [
-  { id: 1, title: "Movie One", poster: "https://via.placeholder.com/300x450", imdbID: "tt1234567" },
-  { id: 2, title: "Movie Two", poster: "https://via.placeholder.com/300x450", imdbID: "tt2345678" },
-  { id: 3, title: "Movie Three", poster: "https://via.placeholder.com/300x450", imdbID: "tt3456789" }
+  { id: 1, title: "Trending One", poster: "https://via.placeholder.com/300x450", imdbID: "tt1234567" },
+  { id: 2, title: "Trending Two", poster: "https://via.placeholder.com/300x450", imdbID: "tt2345678" },
+  { id: 3, title: "Trending Three", poster: "https://via.placeholder.com/300x450", imdbID: "tt3456789" }
 ];
 
-// Homepage: list trending movies
+const bollywoodMovies = [
+  { id: 101, title: "Bollywood Movie 1", poster: "https://via.placeholder.com/300x450", imdbID: "tt1010101" },
+  { id: 102, title: "Bollywood Movie 2", poster: "https://via.placeholder.com/300x450", imdbID: "tt1010102" },
+  { id: 103, title: "Bollywood Movie 3", poster: "https://via.placeholder.com/300x450", imdbID: "tt1010103" }
+];
+
+const hollywoodMovies = [
+  { id: 201, title: "Hollywood Movie 1", poster: "https://via.placeholder.com/300x450", imdbID: "tt2020201" },
+  { id: 202, title: "Hollywood Movie 2", poster: "https://via.placeholder.com/300x450", imdbID: "tt2020202" },
+  { id: 203, title: "Hollywood Movie 3", poster: "https://via.placeholder.com/300x450", imdbID: "tt2020203" }
+];
+
+const southMovies = [
+  { id: 301, title: "South Movie 1", poster: "https://via.placeholder.com/300x450", imdbID: "tt3030301" },
+  { id: 302, title: "South Movie 2", poster: "https://via.placeholder.com/300x450", imdbID: "tt3030302" },
+  { id: 303, title: "South Movie 3", poster: "https://via.placeholder.com/300x450", imdbID: "tt3030303" }
+];
+
+const punjabiMovies = [
+  { id: 401, title: "Punjabi Movie 1", poster: "https://via.placeholder.com/300x450", imdbID: "tt4040401" },
+  { id: 402, title: "Punjabi Movie 2", poster: "https://via.placeholder.com/300x450", imdbID: "tt4040402" },
+  { id: 403, title: "Punjabi Movie 3", poster: "https://via.placeholder.com/300x450", imdbID: "tt4040403" }
+];
+
+// Homepage: render search bar and movie sections
 app.get('/', (req, res) => {
-  res.render('index', { movies: trendingMovies });
+  res.render('index', { 
+    trendingMovies, 
+    bollywoodMovies, 
+    hollywoodMovies, 
+    southMovies, 
+    punjabiMovies 
+  });
 });
 
 // Movie details page: fetch details from OMDB API
 app.get('/movie/:id', async (req, res) => {
   const movieId = parseInt(req.params.id);
-  const movie = trendingMovies.find(m => m.id === movieId);
+  // Combine all movie arrays to find the movie
+  const allMovies = [...trendingMovies, ...bollywoodMovies, ...hollywoodMovies, ...southMovies, ...punjabiMovies];
+  const movie = allMovies.find(m => m.id === movieId);
   if (!movie) {
     return res.status(404).send("Movie not found");
   }
