@@ -2,161 +2,88 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>MovieApp - Futuristic Design</title>
-  <!-- Google Fonts for a modern look -->
+  <title>MovieApp - Landing Page</title>
+  <!-- Optional Google Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link 
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" 
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" 
     rel="stylesheet"
   >
+  <!-- Link to your CSS file in /public/css/style.css -->
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  <!-- Header -->
-  <header class="futura-header">
+  <!-- Header with search bar on top-right -->
+  <header class="landing-header">
     <div class="header-left">
-      <span class="menu-icon">☰</span>
       <a href="/" class="logo">MovieApp</a>
     </div>
     <div class="header-right">
-      <span class="search-icon">🔍</span>
-      <span class="user-icon">👤</span>
+      <input 
+        type="text" 
+        placeholder="Search..." 
+        class="search-bar"
+      />
     </div>
   </header>
 
-  <!-- Hero Carousel -->
-  <section class="hero-carousel">
-    <div class="carousel-slide active">
-      <img 
-        src="https://via.placeholder.com/1600x600.png?text=Slide+1" 
-        alt="Slide 1"
-      />
-      <div class="carousel-overlay">
-        <h2>Discover Epic Adventures</h2>
-        <p>From blockbuster action to indie gems, find your next favorite film.</p>
-        <button class="cta-button">Explore Now</button>
-      </div>
-    </div>
-    <div class="carousel-slide">
-      <img 
-        src="https://via.placeholder.com/1600x600.png?text=Slide+2" 
-        alt="Slide 2"
-      />
-      <div class="carousel-overlay">
-        <h2>New Releases Weekly</h2>
-        <p>Stay on top of the latest hits, fresh from theaters to your screen.</p>
-        <button class="cta-button">View New Releases</button>
-      </div>
-    </div>
-    <div class="carousel-slide">
-      <img 
-        src="https://via.placeholder.com/1600x600.png?text=Slide+3" 
-        alt="Slide 3"
-      />
-      <div class="carousel-overlay">
-        <h2>Watch Anytime, Anywhere</h2>
-        <p>Stream seamlessly on any device, no matter where you are.</p>
-        <button class="cta-button">Start Watching</button>
-      </div>
-    </div>
-    <!-- Carousel controls -->
-    <div class="carousel-controls">
-      <span class="prev-btn">‹</span>
-      <span class="next-btn">›</span>
-    </div>
-  </section>
-
-  <!-- Quick Search/Filter Bar -->
-  <section class="quick-filter">
-    <h3>Quick Search</h3>
-    <input 
-      type="text" 
-      placeholder="Search movies, genres, or actors..." 
-      class="filter-input"
-    />
-    <button class="filter-btn">Search</button>
-  </section>
-
-  <main>
-    <!-- First Trending Section -->
-    <section class="category-section">
-      <h2>Trending Now</h2>
-      <div class="movie-scroll">
+  <!-- Trending Movies Carousel -->
+  <section class="trending-section">
+    <h2>Trending Movies</h2>
+    <div class="carousel-container">
+      <button class="carousel-btn left-btn">&lt;</button>
+      <div class="carousel-track">
         <% trendingMovies.forEach(function(movie) { %>
-          <div class="movie-card">
-            <a href="/movie/<%= movie.id %>">
-              <img src="<%= movie.poster %>" alt="<%= movie.title %> Poster">
-              <h4><%= movie.title %></h4>
-            </a>
+          <div class="carousel-item">
+            <img 
+              src="<%= movie.poster %>" 
+              alt="<%= movie.title %> Poster"
+            />
+            <h4><%= movie.title %></h4>
           </div>
         <% }) %>
       </div>
-    </section>
+      <button class="carousel-btn right-btn">&gt;</button>
+    </div>
+  </section>
 
-    <!-- Second Horizontal Scroller (More Trending or Another Category) -->
-    <section class="category-section">
-      <h2>More Trending</h2>
-      <div class="movie-scroll">
-        <% trendingMovies.forEach(function(movie) { %>
-          <div class="movie-card">
-            <a href="/movie/<%= movie.id %>">
-              <img src="<%= movie.poster %>" alt="<%= movie.title %> Poster">
+  <!-- Categories (like Netflix) -->
+  <section class="categories-section">
+    <% categories.forEach(function(category) { %>
+      <div class="category-block">
+        <h2><%= category.name %></h2>
+        <div class="category-scroll">
+          <% category.movies.forEach(function(movie) { %>
+            <div class="movie-card">
+              <img 
+                src="<%= movie.poster %>" 
+                alt="<%= movie.title %> Poster"
+              />
               <h4><%= movie.title %></h4>
-            </a>
-          </div>
-        <% }) %>
-      </div>
-    </section>
-
-    <!-- Community Highlights -->
-    <section class="community-highlights">
-      <h2>Community Highlights</h2>
-      <div class="highlights-grid">
-        <div class="highlight-card">
-          <h3>Behind the Scenes</h3>
-          <p>Go backstage with exclusive interviews and set tours.</p>
-        </div>
-        <div class="highlight-card">
-          <h3>Fan Reviews</h3>
-          <p>See what real viewers are saying about the latest releases.</p>
-        </div>
-        <div class="highlight-card">
-          <h3>Director’s Cut</h3>
-          <p>Deep-dive into the director’s vision and filmmaking process.</p>
+            </div>
+          <% }) %>
         </div>
       </div>
-    </section>
-  </main>
+    <% }) %>
+  </section>
 
-  <!-- Carousel JavaScript (place this before closing body tag) -->
+  <!-- Optional JavaScript for horizontal scrolling in the trending carousel -->
   <script>
-    const slides = document.querySelectorAll('.carousel-slide');
-    const prevBtn = document.querySelector('.prev-btn');
-    const nextBtn = document.querySelector('.next-btn');
+    const track = document.querySelector('.carousel-track');
+    const leftBtn = document.querySelector('.left-btn');
+    const rightBtn = document.querySelector('.right-btn');
 
-    let currentIndex = 0;
+    // Scroll offset (in pixels)
+    const scrollAmount = 300;
 
-    function showSlide(index) {
-      slides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === index);
-      });
-    }
-
-    prevBtn.addEventListener('click', () => {
-      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-      showSlide(currentIndex);
+    leftBtn.addEventListener('click', () => {
+      track.scrollBy({ top: 0, left: -scrollAmount, behavior: 'smooth' });
     });
 
-    nextBtn.addEventListener('click', () => {
-      currentIndex = (currentIndex + 1) % slides.length;
-      showSlide(currentIndex);
+    rightBtn.addEventListener('click', () => {
+      track.scrollBy({ top: 0, left: scrollAmount, behavior: 'smooth' });
     });
-
-    // Optional auto-rotate every 5 seconds
-    setInterval(() => {
-      nextBtn.click();
-    }, 5000);
   </script>
 </body>
 </html>
