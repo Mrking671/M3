@@ -10,12 +10,14 @@
     <h1><%= movie.Title || movie.title %></h1>
   </header>
   <div class="movie-details">
-    <img src="<%= movie.Poster %>" alt="<%= movie.Title || movie.title %> Poster">
+    <!-- Use OMDB Poster if available; otherwise fallback to local poster -->
+    <img src="<%= (movie.Poster && movie.Poster !== 'N/A') ? movie.Poster : fallbackPoster %>" alt="<%= movie.Title || movie.title %> Poster">
     <div class="details">
       <p><strong>Released:</strong> <%= movie.Released %></p>
       <p><strong>Genre:</strong> <%= movie.Genre %></p>
       <p><strong>Director:</strong> <%= movie.Director %></p>
       <p><strong>Plot:</strong> <%= movie.Plot %></p>
+      <!-- Download button appears below the IMDB details -->
       <a href="/download/<%= movie.imdbID %>" class="download-button">Download</a>
     </div>
   </div>
