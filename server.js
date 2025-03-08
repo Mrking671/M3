@@ -14,36 +14,9 @@ app.set('views', path.join(__dirname, 'views'));
 // Serve static files from /public folder
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Sample data for movies
-const trendingMovies = [
-  { id: 1, title: "Trending One", poster: "https://via.placeholder.com/300x450", imdbID: "tt1234567" },
-  { id: 2, title: "Trending Two", poster: "https://via.placeholder.com/300x450", imdbID: "tt2345678" },
-  { id: 3, title: "Trending Three", poster: "https://via.placeholder.com/300x450", imdbID: "tt3456789" }
-];
-
-const bollywoodMovies = [
-  { id: 101, title: "Bollywood Movie 1", poster: "https://via.placeholder.com/300x450", imdbID: "tt1010101" },
-  { id: 102, title: "Bollywood Movie 2", poster: "https://via.placeholder.com/300x450", imdbID: "tt1010102" },
-  { id: 103, title: "Bollywood Movie 3", poster: "https://via.placeholder.com/300x450", imdbID: "tt1010103" }
-];
-
-const hollywoodMovies = [
-  { id: 201, title: "Hollywood Movie 1", poster: "https://via.placeholder.com/300x450", imdbID: "tt2020201" },
-  { id: 202, title: "Hollywood Movie 2", poster: "https://via.placeholder.com/300x450", imdbID: "tt2020202" },
-  { id: 203, title: "Hollywood Movie 3", poster: "https://via.placeholder.com/300x450", imdbID: "tt2020203" }
-];
-
-const southMovies = [
-  { id: 301, title: "South Movie 1", poster: "https://via.placeholder.com/300x450", imdbID: "tt3030301" },
-  { id: 302, title: "South Movie 2", poster: "https://via.placeholder.com/300x450", imdbID: "tt3030302" },
-  { id: 303, title: "South Movie 3", poster: "https://via.placeholder.com/300x450", imdbID: "tt3030303" }
-];
-
-const punjabiMovies = [
-  { id: 401, title: "Punjabi Movie 1", poster: "https://via.placeholder.com/300x450", imdbID: "tt4040401" },
-  { id: 402, title: "Punjabi Movie 2", poster: "https://via.placeholder.com/300x450", imdbID: "tt4040402" },
-  { id: 403, title: "Punjabi Movie 3", poster: "https://via.placeholder.com/300x450", imdbID: "tt4040403" }
-];
+// Load movies data from movies.json
+const moviesData = require('./movies.json');
+const { trendingMovies, bollywoodMovies, hollywoodMovies, southMovies, punjabiMovies } = moviesData;
 
 // Homepage: render search bar and movie sections
 app.get('/', (req, res) => {
@@ -56,7 +29,7 @@ app.get('/', (req, res) => {
   });
 });
 
-// Movie details page: fetch details from OMDB API
+// Movie details page: fetch details from OMDB API and provide fallback poster if needed
 app.get('/movie/:id', async (req, res) => {
   const movieId = parseInt(req.params.id);
   // Combine all movie arrays to find the movie
@@ -75,7 +48,8 @@ app.get('/movie/:id', async (req, res) => {
     movieDetails = movie; // Fallback if API call fails
   }
   
-  res.render('movie', { movie: movieDetails });
+  // Pass the fallback poster from our local data
+  res.render('movie', { movie: movieDetails, fallbackPoster: movie.poster });
 });
 
 // Download route: trigger Telegram bot search for movie file
