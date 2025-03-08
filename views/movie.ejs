@@ -2,22 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title><%= movie.Title || movie.title %></title>
+  <title><%= movie.Title || 'Movie Details' %></title>
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
   <header>
-    <h1><%= movie.Title || movie.title %></h1>
+    <h1><%= movie.Title || 'Movie Details' %></h1>
   </header>
   <div class="movie-details">
-    <!-- Use OMDB Poster if available; otherwise fallback to local poster -->
-    <img src="<%= (movie.Poster && movie.Poster !== 'N/A') ? movie.Poster : fallbackPoster %>" alt="<%= movie.Title || movie.title %> Poster">
+    <img
+      src="<%= (movie.Poster && movie.Poster !== 'N/A') ? movie.Poster : fallbackPoster %>"
+      alt="<%= movie.Title || 'Poster' %>"
+    >
     <div class="details">
-      <p><strong>Released:</strong> <%= movie.Released %></p>
-      <p><strong>Genre:</strong> <%= movie.Genre %></p>
-      <p><strong>Director:</strong> <%= movie.Director %></p>
-      <p><strong>Plot:</strong> <%= movie.Plot %></p>
-      <!-- Download button appears below the IMDB details -->
+      <p><strong>Released:</strong> <%= movie.Released || 'N/A' %></p>
+      <p><strong>Genre:</strong> <%= movie.Genre || 'N/A' %></p>
+      <p><strong>Director:</strong> <%= movie.Director || 'N/A' %></p>
+      <p><strong>Plot:</strong> <%= movie.Plot || 'N/A' %></p>
       <a href="/download/<%= movie.imdbID %>" class="download-button">Download</a>
     </div>
   </div>
