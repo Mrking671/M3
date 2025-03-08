@@ -9,8 +9,17 @@
       "id": 2,
       "title": "Trending Movie 2",
       "imdbID": "tt2345678"
+    },
+    {
+      "id": 3,
+      "title": "Trending Movie 3",
+      "imdbID": "tt3456789"
+    },
+    {
+      "id": 4,
+      "title": "Trending Movie 4",
+      "imdbID": "tt4567890"
     }
-    // Add as many as you like
   ],
   "bollywoodMovies": [
     {
@@ -18,7 +27,6 @@
       "title": "Bollywood Movie 1",
       "imdbID": "tt1010101"
     }
-    // ...
   ],
   "hollywoodMovies": [
     {
@@ -26,7 +34,6 @@
       "title": "Hollywood Movie 1",
       "imdbID": "tt2020201"
     }
-    // ...
   ],
   "southMovies": [
     {
@@ -34,7 +41,6 @@
       "title": "South Movie 1",
       "imdbID": "tt3030301"
     }
-    // ...
   ],
   "punjabiMovies": [
     {
@@ -42,6 +48,5 @@
       "title": "Punjabi Movie 1",
       "imdbID": "tt4040401"
     }
-    // ...
   ]
 }
